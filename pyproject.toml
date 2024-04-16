@@ -1,0 +1,17 @@
+# pyproject.toml
+
+[tool.poetry]
+name = "pyls"
+version = "0.1.0"
+description = "Python ls utility"
+authors = ["Anirvan Chakraborty <anirban.dido.94@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+pyls = "pyls:main"

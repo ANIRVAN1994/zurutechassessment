@@ -1,0 +1,91 @@
+(1) Problem statement 1:
+    python -m pyls ==> python pyls.py structure.json
+    output : LICENSE README.md ast go.mod lexer main.go parser token
+
+(2) Problem statement 2:
+    python -m pyls -A ==> python pyls.py -A structure.json
+    output : .gitignore LICENSE README.md ast go.mod lexer main.go parser token
+
+(3) Problem statement 3:
+    python -m pyls -l ==> python pyls.py -l structure.json
+    output : drwxr-xr-x 8911 Nov 14 11:27 .gitignore
+            drwxr-xr-x 1071 Nov 14 11:27 LICENSE
+            drwxr-xr-x 83 Nov 14 11:27 README.md
+            drwxr-xr-x 60 Nov 14 13:51 go.mod
+            -rw-r--r-- 74 Nov 14 13:57 main.go
+            -rw-r--r-- 4096 Nov 14 14:57 token
+            drwxr-xr-x 4096 Nov 14 15:21 lexer
+            -rw-r--r-- 4096 Nov 14 15:58 ast
+            drwxr-xr-x 4096 Nov 17 12:51 parser
+
+(4) Problem statement 4:
+    python -m pyls -l -r ==> python pyls.py -l -r structure.json
+    output : drwxr-xr-x 4096 Nov 17 12:51 parser
+            -rw-r--r-- 4096 Nov 14 15:58 ast
+            drwxr-xr-x 4096 Nov 14 15:21 lexer
+            -rw-r--r-- 4096 Nov 14 14:57 token
+            -rw-r--r-- 74 Nov 14 13:57 main.go
+            drwxr-xr-x 60 Nov 14 13:51 go.mod
+            drwxr-xr-x 8911 Nov 14 11:27 .gitignore
+            drwxr-xr-x 1071 Nov 14 11:27 LICENSE
+            drwxr-xr-x 83 Nov 14 11:27 README.md
+
+(5) Problem statement 5:
+    python -m pyls -l -r -t ==> python pyls.py -l -r -t structure.json
+    output : drwxr-xr-x 4096 Nov 17 12:51 parser
+            -rw-r--r-- 4096 Nov 14 15:58 ast
+            drwxr-xr-x 4096 Nov 14 15:21 lexer
+            -rw-r--r-- 4096 Nov 14 14:57 token
+            -rw-r--r-- 74 Nov 14 13:57 main.go
+            drwxr-xr-x 60 Nov 14 13:51 go.mod
+            drwxr-xr-x 8911 Nov 14 11:27 .gitignore
+            drwxr-xr-x 1071 Nov 14 11:27 LICENSE
+            drwxr-xr-x 83 Nov 14 11:27 README.md
+
+(6) Problem statement 6:
+    python -m pyls -l -r -t --filter=dir ==> python pyls.py -l -r -t --filter=dir structure.json
+    output : drwxr-xr-x 4096 Nov 17 12:51 parser
+            -rw-r--r-- 4096 Nov 14 15:58 ast
+            drwxr-xr-x 4096 Nov 14 15:21 lexer
+            -rw-r--r-- 4096 Nov 14 14:57 token
+
+    python -m pyls -l -r -t --filter=file ==> python pyls.py -l -r -t --filter=file structure.json
+    output : -rw-r--r-- 74 Nov 14 13:57 main.go
+            drwxr-xr-x 60 Nov 14 13:51 go.mod
+            drwxr-xr-x 8911 Nov 14 11:27 .gitignore
+            drwxr-xr-x 1071 Nov 14 11:27 LICENSE
+            drwxr-xr-x 83 Nov 14 11:27 README.md
+
+(9) Problem statement 9:
+    python -m pyls --help ==> python pyls.py --help
+    output : usage: pyls.py [-h] [-A] [-l] [-r] [-t] [--filter FILTER] json_file [path]
+
+            Python ls utility
+
+            positional arguments:
+            json_file        structure.json
+            path             Optional path to directory or file
+
+            options:
+            -h, --help       show this help message and exit
+            -A, --all        Do not ignore entries starting with '.'
+            -l, --long       Print additional information
+            -r, --reverse    Print results in reverse
+            -t, --time-sort  Sort results by time_modified
+            --filter FILTER  Filter results by 'file' or 'dir'
+    
+(10) Bonus: (10 points) - Include a pyproject.toml and configure it
+    toml file added
+    $ pyls ==> pyls structure.json
+    output : LICENSE README.md ast go.mod lexer main.go parser token
+
+    Now you can repace all above command with below : 
+
+    **python pyls.py structure.json                        --> pyls structure.json
+    **python pyls.py -A structure.json                     --> pyls -A structure.json
+    **python pyls.py -l structure.json                     --> pyls -l structure.json
+    **python pyls.py -l -r structure.json                  --> pyls -l -r structure.json
+    **python pyls.py -l -r -t structure.json               --> pyls -l -r -t structure.json
+    **python pyls.py -l -r -t --filter=dir structure.json  --> pyls -l -r -t --filter=dir structure.json
+    **python pyls.py -l -r -t --filter=file structure.json --> pyls -l -r -t --filter=file structure.json
+    **python pyls.py --help                                --> pyls --help
